@@ -19,3 +19,4 @@ The draft standard is accessible to SMPTE Standards Community members at <https:
 ## Project details
 
 Creation of a guideline document for XML DCDM mastering of Japanese Timed Text to achieve desired results in current ST 428-7 renderers.
+
