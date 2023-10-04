@@ -8,6 +8,7 @@
     <meta itemprop="pubPart" content="23">
     <meta itemprop="pubState" content="pub">
     <meta itemprop="pubStage" content="CD">
+    <meta itemprop="pubConfidential" content="no">
     <meta itemprop="pubTC" content="27C">
     <meta itemprop="pubDateTime" content="2023-07-05">
     <!-- <meta itemprop="pubRevisionOf" content="SMPTE ST XXXX-Y:ZZZZ" /> -->
@@ -35,6 +36,10 @@ h1 {
   font-weight: bold;
 }
 
+#doc-number-block {
+  margin-bottom: 2rem;
+}
+
 #revision-text {
   font-size: 1rem;
   text-align: right;
@@ -45,25 +50,19 @@ h1 {
   font-size: 1.3rem;
   text-transform: uppercase;
   font-weight: bold;
-  margin-top: 2rem;
 }
 
+#long-pub-stage {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 1rem;
+}
 
 #doc-status {
   font-size: 1rem;
-  font-weight: bold;
-  font-style: italic;
   text-transform: capitalize;
-}
-
-#doc-dates {
-  font-size: 0.8rem;
-  font-style: italic;
-}
-
-#doc-sponsor {
-  font-size: 0.8rem;
-  font-style: italic;
 }
 
 #smpte-logo {
@@ -139,12 +138,6 @@ h6 span.heading-label {
   width: 4rem;
 }
 
-/* generic sections */
-
-section {
-  counter-reset: notes-counter;
-}
-
 /* foreword */
 
 #sec-foreword {
@@ -177,11 +170,22 @@ section.annex > h2 {
   font-weight: normal;
 }
 
+/* definition lists */
+
+dl {
+  margin-left: 1em;
+}
+
 /* terms and definitions */
 
 #sec-terms-and-definitions dd {
   margin-left: 0;
 }
+
+#sec-terms-and-definitions dl {
+  margin-left: 0;
+}
+
 
 dt {
   font-weight: bold;
@@ -197,6 +201,10 @@ dt + dd {
 
 dfn {
   font-style: normal;
+}
+
+dd.term-source {
+  font-size: 0.8rem;
 }
 
 /* quotes */
@@ -454,8 +462,10 @@ code:hover {
 /* warning */
 
 #sec-draft-warning {
+  margin-top: 2rem;
   padding: 1rem;
   border: 2px lightblue solid;
+  text-align: justify;
 }
 
 /* print media */
@@ -479,8 +489,21 @@ code:hover {
     string-set: doc-copyright content(text);
   }
 
+  #long-pub-stage {
+    string-set: doc-pub-stage content(text);
+  }
+
+  #sec-elements a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
   @page:first {
     @top-right {
+      content: "";
+    }
+
+    @top-left {
       content: "";
     }
   }
@@ -491,6 +514,15 @@ code:hover {
       width: 20rem;
       font-size: 10px;
       font-weight: bold;
+    }
+
+    @top-left {
+      content: string(doc-pub-stage);
+      width: 20rem;
+      font-size: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: red;
     }
 
     @bottom-left {
@@ -518,14 +550,26 @@ code:hover {
   }
 
 }</style></head>
-  <body><section class="unnumbered" id="sec-front-matter"><div id="doc-designator" itemscope="itemscope" itemtype="http://purl.org/dc/elements/1.1/">
+  <body><section class="unnumbered" id="sec-front-matter"><div id="doc-number-block">
+<div id="doc-designator" itemscope="itemscope" itemtype="http://purl.org/dc/elements/1.1/">
 <span itemprop="publisher">SMPTE</span>&nbsp;<span id="doc-type">EG</span>&nbsp;<span itemprop="doc-number" id="doc-number">428</span>-<span itemprop="doc-part" id="doc-part">23</span></div>
 
-<div id="long-doc-type">CD SMPTE Engineering Guideline</div>
+</div>
+<div id="long-pub-stage">Committee Draft</div>
 <img id="smpte-logo" src="static/smpte-logo.png" alt="SMPTE logo">
+<div id="long-doc-type">SMPTE Engineering Guideline</div>
 <h1>Mastering Guideline for Japanese Timed Text DCDMs</h1>
 <div id="doc-status">Approved - 2023-07-05</div>
-<hr></section><section id="sec-toc" class="unnumbered"><h2>Table of contents<a class="heading-link" href="#sec-toc">🔗</a></h2><ol><li><a href="#sec-foreword">Foreword</a></li><li><a href="#sec-introduction">Introduction</a></li><li><a href="#sec-scope">1 Scope</a></li><li><a href="#sec-conformance">2 Conformance</a></li><li><a href="#sec-normative-references">3 Normative references</a></li><li><a href="#sec-terms-and-definitions">4 Terms and definitions</a></li><li><a href="#sec-sample-text-and-characters">5 Samples of Japanese text and characters</a><ol><li><a href="#sec-vertical-text">5.1 Vertical text</a></li><li><a href="#sec-tatechuyoko">5.2 TateChuYoko</a></li><li><a href="#sec-chidori-style">5.3 Chidori-style</a></li><li><a href="#sec-yoon">5.4 Yōon</a></li><li><a href="#sec-sokuon">5.5 Sokuon</a></li></ol></li><li><a href="#sec-examples-and-typical-rendering">6 XML examples and typical Japanese rendering results</a><ol><li><a href="#sec-vertical-positioning-vertical-text">6.1 Vertical Positioning of Vertical Text</a><ol><li><a href="#sec-background">6.1.1 Background</a></li><li><a href="#sec-vertical-using-valign-top">6.1.2 Subtitles vertical positioning when using Valign=”top”</a></li><li><a href="#sec-vertical-using-valign-bottom">6.1.3 Subtitles vertical positioning when using Valign=”bottom”</a></li></ol></li><li><a href="#sec-vertical-text-intercharacter-spacing">6.2 Vertical Text Intercharacter Spacing</a></li><li><a href="#sec-spacing-chirdori-style">6.3 Spacing for Chidori-style</a></li></ol></li><li><a href="#sec-bibliography">Bibliography</a></li></ol></section><section id="sec-foreword" class="unnumbered"><h2>Foreword<a class="heading-link" href="#sec-foreword">🔗</a></h2>
+<hr>
+
+<div id="sec-draft-warning">
+<strong>Warning:</strong> This document is an unpublished work under development and shall not be referred
+to as a SMPTE Standard,
+Recommended Practice, or Engineering Guideline. It is distributed for review and comment; distribution does not constitute
+publication. Recipients of this document are strongly encouraged to submit, with their comments, notification of any relevant
+patent rights of which they are aware and to provide supporting documentation.
+</div>
+</section><section id="sec-toc" class="unnumbered"><h2>Table of contents<a class="heading-link" href="#sec-toc">🔗</a></h2><ol><li><a href="#sec-foreword">Foreword</a></li><li><a href="#sec-introduction">Introduction</a></li><li><a href="#sec-scope">1 Scope</a></li><li><a href="#sec-conformance">2 Conformance</a></li><li><a href="#sec-normative-references">3 Normative references</a></li><li><a href="#sec-terms-and-definitions">4 Terms and definitions</a></li><li><a href="#sec-sample-text-and-characters">5 Samples of Japanese text and characters</a><ol><li><a href="#sec-vertical-text">5.1 Vertical text</a></li><li><a href="#sec-tatechuyoko">5.2 TateChuYoko</a></li><li><a href="#sec-chidori-style">5.3 Chidori-style</a></li><li><a href="#sec-yoon">5.4 Yōon</a></li><li><a href="#sec-sokuon">5.5 Sokuon</a></li></ol></li><li><a href="#sec-examples-and-typical-rendering">6 XML examples and typical Japanese rendering results</a><ol><li><a href="#sec-vertical-positioning-vertical-text">6.1 Vertical Positioning of Vertical Text</a><ol><li><a href="#sec-background">6.1.1 Background</a></li><li><a href="#sec-vertical-using-valign-top">6.1.2 Subtitles vertical positioning when using Valign=”top”</a></li><li><a href="#sec-vertical-using-valign-bottom">6.1.3 Subtitles vertical positioning when using Valign=”bottom”</a></li></ol></li><li><a href="#sec-vertical-text-intercharacter-spacing">6.2 Vertical Text Intercharacter Spacing</a></li><li><a href="#sec-spacing-chirdori-style">6.3 Spacing for Chidori-style</a></li></ol></li><li><a href="#sec-bibliography">Bibliography</a></li></ol></section><section id="sec-foreword" class="unnumbered"><h2>Foreword<a class="heading-link" href="#sec-foreword">🔗</a></h2>
 <p><a href="https://www.smpte.org">SMPTE (the Society of
 Motion Picture and Television Engineers)</a> is an
 internationally-recognized standards developing organization. Headquartered
@@ -544,16 +588,8 @@ However, attention is drawn to the possibility that some of the elements of this
 SMPTE shall not be held responsible for identifying any or all such patent rights.</p>
 
 <p>This document was prepared by Technology Committee 27C.</p>
-<div id="sec-draft-warning">
-<strong>Warning:</strong> This document is an unpublished, confidential work under development and shall not be referred
-to as a SMPTE Standard,
-Recommended Practice, or Engineering Guideline. It is distributed for review and comment; distribution does not constitute
-publication. Recipients of this document are strongly encouraged to submit, with their comments, notification of any relevant
-patent rights of which they are aware and to provide supporting documentation.
-</div>
 
-
-<p><span id="copyright-text">Copyright © <span id="doc-copyright-year">2023</span> SMPTE</span>, 45 Hamilton Ave., White Plains NY 10601, (914) 761-1100.</p></section>
+<p><span id="copyright-text">Copyright © <span id="doc-copyright-year">2023</span>, Society of Motion Picture and Television Engineers</span>. All rights reserved. No part of this material may be reproduced, by any means whatsoever, without the prior written permission of the Society of Motion Picture and Television Engineers.</p></section>
 
     <section id="sec-introduction" class="unnumbered"><h2>Introduction<a class="heading-link" href="#sec-introduction">🔗</a></h2><p><em>This section is entirely informative and does not form an integral part of this Engineering Document.</em></p>
       <!-- Remove section if there is no introduction -->
@@ -622,9 +658,8 @@ document and from which no deviation is permitted.</p>
       <!-- Remove DL element if no internal definitions -->
       <dl id="terms-int-defs">
         <dt><dfn id="dfn-projection-mask">projection mask</dfn></dt>
-        <dd>edge of active area of the picture essence, where the active area is the rectangular region which is intended to be visible to the audience
-          <p class="note">NOTE — Active area related information is available through the <code>MainPictureActiveArea</code> element as defined in <a href="#bib-st-429-16">SMPTE ST 429-16</a>.</p>
-        </dd>
+        <dd>edge of active area of the picture essence, where the active area is the rectangular region which is intended to be visible to the audience</dd>
+        <dd class="note"><span class="heading-label">Note <span class="heading-number">1</span> to entry: </span>Active area related information is available through the <code>MainPictureActiveArea</code> element as defined in <a href="#bib-st-429-16">SMPTE ST 429-16</a>.</dd>
 
       </dl>
     </section>
@@ -667,7 +702,7 @@ document and from which no deviation is permitted.</p>
         <p>
           These twenty characters are smaller versions of Japanese characters that are used when a mora is formed with palatalization or labialization.
         </p>
-        <p class="example">EXAMPLE — 
+        <p class="example"><span class="heading-label">EXAMPLE <span class="heading-number"></span> —⁠ </span>
           The Hiragana letter “ぁ” is a <a href="#dfn-yōon" class="dfn-ref">Yōon</a>. It is the smaller version of the same Hiragana letter “あ” , as shown in <a href="#figure-yoon">Figure 4</a>.
         </p>
         <figure id="figure-yoon">
@@ -680,7 +715,7 @@ document and from which no deviation is permitted.</p>
         <p>
           These two characters are smaller versions of Japanese characters that are used to mark a geminate consonant. 
         </p>
-        <p class="example">EXAMPLE — 
+        <p class="example"><span class="heading-label">EXAMPLE <span class="heading-number"></span> —⁠ </span>
           Hiragana letter “っ” is a <a href="#dfn-sokuon" class="dfn-ref">Sokuon</a>. It is the smaller version of the same Hiragana letter “つ” , as shown in <a href="#figure-sokuon">Figure 5</a>.
         </p>
         <figure id="figure-sokuon">
@@ -702,7 +737,7 @@ document and from which no deviation is permitted.</p>
           <p>
             Section 6.3.4 of <a href="#bib-st-428-7-2014">SMPTE ST 428-7: 2014</a> states, “When present, the <code>Vposition</code> attribute shall specify the distance of the text’s baseline from the edge or the center of the primary picture.” This requirement differs from prior versions of <a href="#bib-st-428-7">SMPTE ST 428-7</a>, leading to different subtitle vertical positions, especially in the case of <a href="#dfn-vertical-text" class="dfn-ref">vertical text</a>. This may cause subtitle character(s) to unexpectedly be positioned outside of the primary picture, and therefore partially or entirely hidden by the <a href="#dfn-projection-mask" class="dfn-ref">projection mask</a>.
           </p>
-          <p class="example">EXAMPLE — 
+          <p class="example"><span class="heading-label">EXAMPLE <span class="heading-number"></span> —⁠ </span>
             The top subtitle character may be hidden partially when the <code>Vposition</code> value is not enough with <code>Valign="top"</code>, as shown in <a href="#figure-example-character-hidden-projection-mask">Figure 6</a>. And a long subtitle character chain may also be truncated at the bottom edge of the primary picture.
           </p>
           <figure id="figure-example-character-hidden-projection-mask">
@@ -719,7 +754,7 @@ document and from which no deviation is permitted.</p>
             <p>
               The example below illustrates results obtained by the implementation of different <a href="#bib-st-428-7">SMPTE ST 428-7</a> versions.
             </p>
-            <div class="example">EXAMPLE — 
+            <div class="example"><span class="heading-label">EXAMPLE <span class="heading-number"></span> —⁠ </span>
               <p>
                 XML excerpt containing <code>Vposition</code> values specified by content creator expecting compliance with <a href="#bib-st-428-7-2014">SMPTE ST 428-7: 2014</a>:
               </p>
@@ -753,7 +788,7 @@ document and from which no deviation is permitted.</p>
               <img src="media/ascent-vs-descent-distance-illustration.png">
               <figcaption><span class="heading-label">Figure <span class="heading-number">9</span> –⁠ </span>Ascent vs Descent Distance Illustration</figcaption>
             </figure>
-            <div class="example">EXAMPLE 1 — 
+            <div class="example"><span class="heading-label">EXAMPLE <span class="heading-number">1</span> —⁠ </span>
               <p>
                 XML essence containing <code>Valign="bottom"</code> and <code>Vposition</code> values used to illustrate the positioning difference between <a href="#bib-st-428-7-2014">SMPTE ST 428-7: 2014</a> and <a href="#bib-st-428-7-2010">SMPTE ST 428-7: 2010</a>, as shown in <a href="#figure-vertical-positioning-valign-bottom-428-7-2014">Figure 10</a>, <a href="#figure-vertical-positioning-valign-bottom-428-7-2010">Figure 11</a>, and <a href="#figure-vertical-positioning-valign-bottom-428-7-difference">Figure 12</a>:
               </p>
@@ -774,7 +809,7 @@ document and from which no deviation is permitted.</p>
                 <figcaption><span class="heading-label">Figure <span class="heading-number">12</span> –⁠ </span>Example of Vertical Positioning of <a href="#dfn-vertical-text" class="dfn-ref">Vertical Text</a> with <code>Valign="bottom"</code> and compliance with <a href="#bib-st-428-7-2014">SMPTE ST 428-7: 2014</a> (Left) vs <a href="#bib-st-428-7-2010">SMPTE ST 428-7: 2010</a> (Right)</figcaption>
               </figure>
             </div>
-            <div class="example">EXAMPLE 2 — 
+            <div class="example"><span class="heading-label">EXAMPLE <span class="heading-number">2</span> —⁠ </span>
               <p>
                 XML essence containing <code>Valign="top"</code> and <code>Vposition</code> values used to illustrate the positioning difference between <a href="#bib-st-428-7-2014">SMPTE ST 428-7: 2014</a> and <a href="#bib-st-428-7-2010">SMPTE ST 428-7: 2010</a>, as shown in <a href="#figure-vertical-positioning-valign-top-428-7-2014">Figure 13</a>, <a href="#figure-vertical-positioning-valign-top-428-7-2010">Figure 14</a>, and <a href="#figure-vertical-positioning-valign-top-428-7-difference">Figure 15</a>:
               </p>
@@ -1000,7 +1035,7 @@ document and from which no deviation is permitted.</p>
         <p>
           When using such characters, it is necessary to consider the vertical spacing between characters. For example, for better intercharacter spacing it is recommended to specify each of these possibly mis-handled characters using a dedicated <code>Text</code> element and its own <code>Vposition</code> and <code>Hposition</code> specific values in the XML file to avoid collision with characters positioned above or below them. It’s not recommended to use Ideographic Space characters (U+3000), Space characters (U+0020), or the Space element for the intercharacter spacing due to uncertain appearance.
         </p>
-        <div class="example">EXAMPLE 1 — 
+        <div class="example"><span class="heading-label">EXAMPLE <span class="heading-number">1</span> —⁠ </span>
           <p>
             XML file with “一” character, <code>HGroup</code> elements and <code>Italic</code> attribute:
           </p>
@@ -1029,7 +1064,7 @@ Vposition="20.00" Zposition="0.00"&gt;国一国Ｅ一Ｅ&lt;HGroup&gt;1234&lt;/H
         <p>
           To achieve the same appearance as shown in <a href="#figure-desired-vertical-intercharacter-spacing">Figure 17</a>, specify the <code>Vposition</code> values of the character “一” (U+4E00) and each character (or group of characters) before and after it using dedicated <code>Text</code> elements.
         </p>
-        <div class="example">EXAMPLE 2 — 
+        <div class="example"><span class="heading-label">EXAMPLE <span class="heading-number">2</span> —⁠ </span>
           <p>
             XML file with a dedicated <code>Text</code> element for each charcter associated with a <code>Direction</code> attribute value equal to "ttb" or "btt":
           </p>
@@ -1055,7 +1090,7 @@ Vposition="20.00" Zposition="0.00"&gt;国一国Ｅ一Ｅ&lt;HGroup&gt;1234&lt;/H
         <p>
           The horizontal positioning is based on the bounding box. Neither leading Ideographic Space (U+3000) and Space (U+0020) characters nor the <code>Space</code> element might increase the size of the bounding box as required to shift the text to the right. It recommended to use a different <code>Hposition</code> for each line of <a href="#dfn-chidori-style" class="dfn-ref">Chidori-style</a> instead.
         </p>
-        <div class="example">EXAMPLE — 
+        <div class="example"><span class="heading-label">EXAMPLE <span class="heading-number"></span> —⁠ </span>
           <p>
             XML file with different <code>Hposition</code> values for each line of <a href="#dfn-chidori-style" class="dfn-ref">Chidori-style</a>:
           </p>

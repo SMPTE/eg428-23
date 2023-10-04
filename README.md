@@ -1,8 +1,8 @@
 # SMPTE EG 428-23 Mastering Guideline for Japanese Timed Text DCDMs 1ED (1st Edition)
 
-Public CD of [SMPTE EG  1ED](27c-eg-428-23-cd-2023-07-05-pub)
+Public CD of [SMPTE EG  1ED](27c-eg-428-23-cd-2023-10-04-pub)
 
-This document is made available for a public review period ending no earlier than `2024-01-14`, and no later than `2024-07-14`.
+This document is made available for a public review period ending no earlier than `2024-04-10`, and no later than `2024-10-10`.
 
 _This repository is public._ 
 
