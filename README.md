@@ -1,4 +1,8 @@
-# SMPTE EG 428-23 Mastering Guideline for Japanese Timed Text DCDMs
+# SMPTE EG 428-23 Mastering Guideline for Japanese Timed Text DCDMs 1ED (1st Edition)
+
+Public CD of [SMPTE EG  1ED](27c-eg-428-23-cd-2023-10-04-pub)
+
+This document is made available for a public review period ending no earlier than `2024-04-10`, and no later than `2024-10-10`.
 
 _This repository is public._ 
 
@@ -15,3 +19,4 @@ The draft standard is accessible to SMPTE Standards Community members at <https:
 ## Project details
 
 Creation of a guideline document for XML DCDM mastering of Japanese Timed Text to achieve desired results in current ST 428-7 renderers.
+
